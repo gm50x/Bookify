@@ -1,4 +1,3 @@
 ﻿namespace Bookify.Domain.Appartments;
-public record Name
-{
-}
+public record Name(
+    string Value);
