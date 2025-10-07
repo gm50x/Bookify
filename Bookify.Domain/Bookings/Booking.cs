@@ -77,7 +77,7 @@ public class Booking : Entity
     {
         if (Status != BookingStatus.Reserved)
         {
-            return Result.Failure(BookingErrors.NotPending);
+            return Result.Failure(BookingErrors.NotReserved);
         }
 
         Status = BookingStatus.Confirmed;
@@ -114,7 +114,7 @@ public class Booking : Entity
         if (currentDate > Duration.Start)
         {
             return Result.Failure(BookingErrors.AlreadyStarted);
-        
+
         }
 
         Status = BookingStatus.Cancelled;
