@@ -4,7 +4,7 @@ using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Bookings;
-internal class Booking : Entity
+public class Booking : Entity
 {
     public Guid ApartmentId { get; private set; }
     public Guid UserId { get; private set; }
