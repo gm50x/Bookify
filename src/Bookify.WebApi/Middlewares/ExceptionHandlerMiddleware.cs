@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+﻿using Bookify.Application.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookify.WebApi.Middlewares;
