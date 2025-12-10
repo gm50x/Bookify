@@ -2,6 +2,7 @@
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Appartments;
+
 public sealed class Apartment : Entity
 {
     public Apartment(
@@ -22,17 +23,21 @@ public sealed class Apartment : Entity
         Amenities = amenities;
     }
 
+    private Apartment()
+    {
+    }
+
     public Name Name { get; private set; }
-    
+
     public Description Description { get; private set; }
-    
+
     public Address Address { get; private set; }
-    
+
     public Money Price { get; private set; }
-    
+
     public Money CleaningFee { get; private set; }
-    
+
     public DateTime? LastBookedOnUtc { get; internal set; }
-    
+
     public List<Amenity> Amenities { get; set; } = [];
 }

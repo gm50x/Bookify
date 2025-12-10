@@ -4,6 +4,7 @@ using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Bookings;
+
 public class Booking : Entity
 {
     public Guid ApartmentId { get; private set; }
@@ -43,6 +44,10 @@ public class Booking : Entity
         TotalPrice = totalPrice;
         Status = status;
         CreatedOnUtc = createdOnUtc;
+    }
+
+    private Booking()
+    {
     }
 
     public static Booking Reserve(

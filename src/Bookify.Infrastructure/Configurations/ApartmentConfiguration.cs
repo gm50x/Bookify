@@ -12,7 +12,7 @@ internal sealed class ApartmentConfiguration : IEntityTypeConfiguration<Apartmen
         
         builder.HasKey(apartment => apartment.Id);
         
-        builder.HasOne(apartment => apartment.Address);
+        builder.OwnsOne(apartment => apartment.Address);
         
         builder.Property(apartmenet => apartmenet.Name)
             .HasMaxLength(200)
