@@ -1,11 +1,13 @@
 ﻿using Bookify.Application.SearchApartments;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookify.WebApi.Controllers.Apartments;
 
-[Route("api/[controller]")]
+[Authorize]
 [ApiController]
+[Route("api/[controller]")]
 public class ApartmentsController : ControllerBase
 {
     private readonly ISender _sender;
