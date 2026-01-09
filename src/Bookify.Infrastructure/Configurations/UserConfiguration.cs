@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Bookify.Infrastructure.Configurations;
+
 internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
@@ -21,8 +22,12 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property(user => user.Email)
             .HasMaxLength(200)
-            .HasConversion(email=> email.Value, value => new Email(value));
+            .HasConversion(email => email.Value, value => new Email(value));
+
+        builder.Property(user => user.IdentityId)
+            .HasMaxLength(36);
 
         builder.HasIndex(user => user.Email).IsUnique();
+        builder.HasIndex(user => user.IdentityId).IsUnique();
     }
 }

@@ -53,6 +53,6 @@ public static class SeedDataExtensions
                 VALUES(@Id, @Name, @Description, @Country, @State, @ZipCode, @City, @Street, @AddressNumber, @PriceAmount, @PriceCurrency, @CleaningFeeAmount, @CleaningFeeCurrency, @Amenities, @LastBookedOnUtc)
                 """;
 
-        //connection.Execute(sql, apartments);
+        connection.Execute(sql, apartments);
     }
 }

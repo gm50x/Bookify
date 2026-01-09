@@ -1,4 +1,4 @@
-﻿namespace Bookify.Application.SearchApartments;
+﻿namespace Bookify.Application.Apartments.SearchApartments;
 public sealed record AddressResponse
 {
     public string Country { get; init; }

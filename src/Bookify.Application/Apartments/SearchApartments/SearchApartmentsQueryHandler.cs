@@ -4,7 +4,7 @@ using Bookify.Domain.Abstractions;
 using Bookify.Domain.Bookings;
 using Dapper;
 
-namespace Bookify.Application.SearchApartments;
+namespace Bookify.Application.Apartments.SearchApartments;
 internal sealed class SearchApartmentsQueryHandler(ISqlConnectionFactory sqlConnectionFactory)
     : IQueryHandler<SearchApartmentsQuery, IReadOnlyList<ApartmentResponse>>
 {

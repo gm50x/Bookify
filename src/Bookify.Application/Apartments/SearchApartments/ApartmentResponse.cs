@@ -1,4 +1,4 @@
-﻿namespace Bookify.Application.SearchApartments;
+﻿namespace Bookify.Application.Apartments.SearchApartments;
 public sealed record ApartmentResponse
 {
     public Guid Id { get; init; }
