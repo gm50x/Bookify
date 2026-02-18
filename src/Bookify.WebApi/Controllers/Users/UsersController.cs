@@ -42,9 +42,14 @@ public class UsersController : ControllerBase
 
         var result = await _sender.Send(command, cancellationToken);
 
-        return result.IsSuccess
-            ? Ok(result.Value)
-            : BadRequest(result.Error);
+        //return CreatedAtAction(nameof(GetBooking), new { id = result.Value }, result.Value);
+
+        if (!result.IsSuccess)
+        {
+            return BadRequest(result.Error);
+        }
+
+        return Ok(new { id = result.Value });
     }
 
     [AllowAnonymous]

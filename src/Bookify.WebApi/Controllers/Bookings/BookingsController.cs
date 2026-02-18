@@ -1,12 +1,14 @@
 ﻿using Bookify.Application.Bookings.GetBooking;
 using Bookify.Application.Bookings.ReserveBooking;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookify.WebApi.Controllers.Bookings;
 
-[Route("api/[controller]")]
 [ApiController]
+[Authorize]
+[Route("api/[controller]")]
 public class BookingsController : ControllerBase
 {
     private readonly ISender _sender;
@@ -44,7 +46,8 @@ public class BookingsController : ControllerBase
             return BadRequest(result.Error);
         }
 
-        return CreatedAtAction(nameof(GetBooking), new { id = result.Value }, result.Value);
+        var formattedResult = new { id = result.Value };
+        return CreatedAtAction(nameof(GetBooking), formattedResult, formattedResult);
 
     }
 }
