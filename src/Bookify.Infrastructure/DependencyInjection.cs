@@ -7,6 +7,7 @@ using Bookify.Domain.Appartments;
 using Bookify.Domain.Bookings;
 using Bookify.Domain.Users;
 using Bookify.Infrastructure.Authentication;
+using Bookify.Infrastructure.Authorization;
 using Bookify.Infrastructure.Clock;
 using Bookify.Infrastructure.Data;
 using Bookify.Infrastructure.Mailing;
@@ -17,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using IClaimsTransformation = Microsoft.AspNetCore.Authentication.IClaimsTransformation;
 
 namespace Bookify.Infrastructure;
 
@@ -29,6 +31,7 @@ public static class DependencyInjection
 
         AddPersistence(services, configuration);
         AddAuthentication(services, configuration);
+        AddAuthorization(services);
 
         return services;
     }
@@ -84,5 +87,11 @@ public static class DependencyInjection
             new SqlConnectionFactory(connectionString));
 
         SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
+    }
+
+    private static void AddAuthorization(IServiceCollection services)
+    {
+        services.AddScoped<AuthorizationService>();
+        services.AddTransient<IClaimsTransformation, CustomClaimsTransformation>();
     }
 }
